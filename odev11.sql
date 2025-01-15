@@ -36,7 +36,10 @@ SELECT actor.first_name FROM actor
 INNER JOIN customer
 ON actor.first_name = customer.first_name;
 
-SELECT actor.first_name FROM actor
-LEFT JOIN customer
-ON actor.first_name = customer.first_name
-WHERE customer.first_name IS NULL;
+(
+SELECT first_name FROM actor
+)
+EXCEPT ALL
+(
+SELECT first_name FROM customer
+);
